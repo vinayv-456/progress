@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  justify-content:flex-start;
+  width:"100%";
+  flex-wrap: wrap;
   align-items: center;
   display: flex;
-  height: '50%';
 }
 
 .bar {
@@ -12,7 +12,14 @@
   transition: 1s ease;
   transition-delay: 0.5s;
 }
-
+.transition{
+  position: absolute ;
+  bottom:0; 
+  width: 100%; 
+  background-color:blue; 
+  opacity:0.1; 
+  transition: 1s linear;
+  transition-delay: 0.7s;}
 
 .card {
   min-width: 200px;
@@ -33,39 +40,14 @@
 }
 
 .testGradiants0{
-  background: rgb(227,170,100);
   background: linear-gradient(121deg, rgba(227,170,100,1) 0%, rgba(94,48,177,1) 100%);
   
 }
 
 .testGradiants1{
-  background: rgb(45,160,162);
   background: linear-gradient(121deg, rgba(45,160,162,0.9752275910364145) 0%, rgba(177,136,48,1) 100%);
 }
 
 .testGradiants2{
-  background: rgb(171,227,100);
   background: linear-gradient(117deg, rgba(171,227,100,1) 0%, rgba(48,177,165,1) 100%);
-}
-
-.testGradiants0d{
-  background: rgb(227,170,100);
-  background: linear-gradient(121deg, rgba(227,170,100,1) 0%, rgba(94,48,177,1) 100%);
-  opacity: 0.7;
-  z-index: -1;
-
-}
-
-.testGradiants1d{
-  background: rgb(45,160,162);
-  background: linear-gradient(121deg, rgba(45,160,162,0.9752275910364145) 0%, rgba(177,136,48,1) 100%);
-  opacity: 0.5;
-  z-index: -1;
-}
-
-.testGradiants2d{
-  background: rgb(171,227,100);
-  background: linear-gradient(117deg, rgba(171,227,100,1) 0%, rgba(48,177,165,1) 100%);
-  opacity: 0.5;
-  z-index: -1;
 }
