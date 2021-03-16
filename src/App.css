@@ -19,7 +19,8 @@
   background-color:blue; 
   opacity:0.1; 
   transition: 1s linear;
-  transition-delay: 0.7s;}
+  border-radius: 20px;
+}
 
 .card {
   min-width: 200px;
