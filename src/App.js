@@ -4,9 +4,8 @@ import './App.css';
 function App() {
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [products , setProducts] = useState([])
-  const [percentage, setPercentage] = useState(0)
 
-  const [formTarget, setFromTarget] = useState('');
+  const [formTarget, setFormTarget] = useState('');
   const [formAchieved, setFormAchieved] = useState('');
   
   useEffect(()=>{
@@ -60,20 +59,18 @@ function App() {
     setProducts(temp_products);
   }, [])
   
-  const getPercentage = (index) => {
-    setPercentage((products[index]?.achieved/products[index]?.target)*100)
-
-  }
   
   return (
     <div className="main" style={{height: '100vh', display:'flex', width:'100vw'}}>
       <div className="App" style={{position:'relative', flexDirection:'column', overflowY:'scroll', width:'80%'}}>
         {
           products?.map((product, key) => {
-            return <div key={key} className={`card testGradiants${key%3} flexVertical`}  onClick={()=> {setActiveProductIndex(key); setFromTarget(product?.target); setFormAchieved(product?.achieved);}}>
+            console.log("products", products);
+            let percentage = product.achieved ? (product.achieved/product.target)*100 : 0;
+            return <div key={key} className={`card testGradiants${key%3} flexVertical`}  onClick={()=> {setActiveProductIndex(key); setFormTarget(product?.target); setFormAchieved(product?.achieved);}}>
                     <h2 className={'center'}>{product.name}</h2>
-                    <div style={{ height: percentage}} className={`transition`}></div>
-                    <p>{product.target ? product.target : '--'}/{product.achieved ? product.achieved : '--'}</p>
+                    <div style={{ height: `${percentage}%`}} className={`transition`}></div>
+                    <p>{product.achieved ? product.achieved : '--'}/{product.target ? product.target : '--'}</p>
                   </div>
           })
         }
@@ -85,7 +82,7 @@ function App() {
             <div style={{justifyContent:'center', alignItems:'center', display:'flex', flexDirection:'column'}}>
               <label>
                 Target:
-                <input type="text" name="target" value={formTarget} onChange={(event)=> setFromTarget(event.target.value)}/>
+                <input type="text" name="target" value={formTarget} onChange={(event)=> setFormTarget(event.target.value)}/>
               </label>
               <br/>
               <label>
@@ -101,7 +98,6 @@ function App() {
                 }
                 products.splice(activeProductIndex, 1, temp_obj)
                 setProducts(products)
-                getPercentage(activeProductIndex)
               }}/>
             </div>
       </div>
